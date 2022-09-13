@@ -17,6 +17,7 @@ What would look more suspicious? an empty hard drive or a full hard drive?
 What is the definition for an abstract view of a hard drive?
 > Image
 
+
 ## Problems Facing Digital Forensic Analysts
 
 1. Time Consumption & Resources
@@ -29,6 +30,7 @@ What is the definition for an abstract view of a hard drive?
   - We all know (and love) steganography here; Hiding data within data. And in some cases, is more secure then cryptography; seeing as cryptography makes the contents unreadable, steganography masquerades the entire existence of this data altogether. (Din et al., 2018)
 5. Cost of Entry
 
+
 ## iOS File Systems
 
 Apple have created their own sets of file system formattings: ***AFS and HFS+***
@@ -40,3 +42,10 @@ Whilst HFS+ didn't support encryption at its entirety (a win in our books as for
 AFS or Apple File System (creative right...!) boasts many features, including full disk encryption, worrisome for analysts considering all devices past iOS 10.3 will have this system structure. But from a design point of view, AFS introduces smarter data management such as in the screenshot below, where a file requiring 3 blocks worth of space when copied, would require another 3 blocks again.
 
 ![Copying a file HFS+ vs. AFS](/THM-iOS-Forensics/docs/assets/images/Copying a file HFS+ vs. AFS.png)
+
+Instead of writing and storing the entire data again (taking up six blocks in our example), AFS simply creates another reference to the file (only taking up a total of four blocks in our example), similar to inodes in Linux.
+
+
+## Modern iOS Security
+
+
