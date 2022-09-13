@@ -82,3 +82,4 @@ In a court of law, any evidence submitted must be admissible. This complex proce
 ```
 sudo find / -type f -name "*.plist" 2> /dev/null
 ```
+Open with ProperTree, Visual Studio or even a normal IDE/text editor. XCode maybe?
