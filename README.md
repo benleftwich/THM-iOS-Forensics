@@ -50,4 +50,6 @@ Instead of writing and storing the entire data again (taking up six blocks in ou
 
 Since 2018, Apple enforced a **Restricted Mode** on all iDevices running that version and above. This feature disables the input/output of data functionality from the lightning (charge) cable until the iPhone is unlocked with a passcode. Devices must be trusted before any data can be written - or so as by design.
 
+![iPhone Restricted Mode](/THM-iOS-Forensics/docs/assets/images/iphone restricted mode.png)
 
+In Restricted Mode, the iPhone will charge, but any data cannot be written or read in its current state.
