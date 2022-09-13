@@ -13,6 +13,7 @@ As you'll come to discover, digital devices hold plethoras of information, and i
 
 What would look more suspicious? an empty hard drive or a full hard drive?
 > An empty hard drive
+
 What is the definition for an abstract view of a hard drive?
 > Image
 
