@@ -1,6 +1,6 @@
 # TryHackMe - iOS Forensics
 
-![TryHackMe iOS Forensics front banner](THM-iOS-Forensics/docs/assets/images/THM-ios-forensics-banner.png)
+![TryHackMe iOS Forensics front banner](/THM-iOS-Forensics/assets/images/THM-ios-forensics-banner.png)
 
 This is some text.
 
