@@ -46,6 +46,10 @@ Whilst HFS+ didn't support encryption at its entirety (a win in our books as for
 Instead of writing and storing the entire data again (taking up six blocks in our example), AFS simply creates another reference to the file (only taking up a total of four blocks in our example), similar to inodes in Linux.
 
 
+
+
+
+
 ## Modern iOS Security
 
 Since 2018, Apple enforced a **Restricted Mode** on all iDevices running that version and above. This feature disables the input/output of data functionality from the lightning (charge) cable until the iPhone is unlocked with a passcode. Devices must be trusted before any data can be written - or so as by design.
@@ -53,3 +57,22 @@ Since 2018, Apple enforced a **Restricted Mode** on all iDevices running that ve
 ![iPhone Restricted Mode](/THM-iOS-Forensics/docs/assets/images/iphone restricted mode.png)
 
 In Restricted Mode, the iPhone will charge, but any data cannot be written or read in its current state.
+
+
+
+
+
+
+
+## Data Acquisition & Trust Certificates
+
+In modern-day digital forensics, there are four primary methods and procedures followed when trying to retrieve data from devices such as iPhones. How an analyst approaches a device is arguably the most important decision they'll make. If the wrong call was made, data that could have been retrieved may end up deleted, or just as worse, inadmissible as evidence due to incorrect technique or failure to follow policy.
+
+In a court of law, any evidence submitted must be admissible. This complex process involves the "chain of custody". No matter how indicting a piece of evidence is, it can be dismissed if there is insufficient documentation and/or negligence in handling - all the way from the crime scene to the courtroom.
+
+| Method | Use Case |
+| --------------- | --------------- | 
+| Direct acquisition | Interacting with the device itself if, for example, it was found unlocked. No need to bypass anything! |
+| Logical/backup acquisition | Utilising the iTunes backup of a phone for file system entry, or the use of forensics software to analyse data found within these backups i.e. .plists  | 
+| Advanced logical acquisition | Using the escalated privileges to an iPhones file system found when pairing an iOS device to a Computer using either iTunes or Xcode. | 
+| Physical acquisition | The most direct approach, physical acquisition is the use of forensic imaging kits such as Cellebrite to take entire bit-for-bit copies of both the data and system partitions. Unsophisticated tools (such as those that don't launch the iPhone into a custom boot loader) will leave the data encrypted. |
