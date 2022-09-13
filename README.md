@@ -76,3 +76,9 @@ In a court of law, any evidence submitted must be admissible. This complex proce
 | Logical/backup acquisition | Utilising the iTunes backup of a phone for file system entry, or the use of forensics software to analyse data found within these backups i.e. .plists  | 
 | Advanced logical acquisition | Using the escalated privileges to an iPhones file system found when pairing an iOS device to a Computer using either iTunes or Xcode. | 
 | Physical acquisition | The most direct approach, physical acquisition is the use of forensic imaging kits such as Cellebrite to take entire bit-for-bit copies of both the data and system partitions. Unsophisticated tools (such as those that don't launch the iPhone into a custom boot loader) will leave the data encrypted. |
+
+
+
+```
+sudo find / -type f -name "*.plist" 2> /dev/null
+```
