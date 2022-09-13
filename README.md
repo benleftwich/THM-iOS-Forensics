@@ -39,7 +39,7 @@ Starting with the oldest, [HFS+ or Mac OS Extended](https://en.wikipedia.org/wik
 
 Whilst HFS+ didn't support encryption at its entirety (a win in our books as forensic analysts) any device such as iMac or iPhone past iOS 10.3 will have had their file system converted from HFS+ to AFS automatically.
 
-AFS or Apple File System (creative right...!) boasts many features, including full disk encryption, worrisome for analysts considering all devices past iOS 10.3 will have this system structure. But from a design point of view, AFS introduces smarter data management such as in the screenshot below, where a file requiring 3 blocks worth of space when copied, would require another 3 blocks again.
+[AFS or Apple File System](https://en.wikipedia.org/wiki/Apple_File_System) (creative right...!) boasts many features, including full disk encryption, worrisome for analysts considering all devices past iOS 10.3 will have this system structure. But from a design point of view, AFS introduces smarter data management such as in the screenshot below, where a file requiring 3 blocks worth of space when copied, would require another 3 blocks again.
 
 ![Copying a file HFS+ vs. AFS](/THM-iOS-Forensics/docs/assets/images/Copying a file HFS+ vs. AFS.png)
 
@@ -47,5 +47,7 @@ Instead of writing and storing the entire data again (taking up six blocks in ou
 
 
 ## Modern iOS Security
+
+Since 2018, Apple enforced a **Restricted Mode** on all iDevices running that version and above. This feature disables the input/output of data functionality from the lightning (charge) cable until the iPhone is unlocked with a passcode. Devices must be trusted before any data can be written - or so as by design.
 
 
