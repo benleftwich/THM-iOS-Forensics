@@ -84,3 +84,10 @@ sudo find / -type f -name "*.plist" 2> /dev/null
 Get-ChildItem -Path C:\ -Include *.plist -File -Recurse -ErrorAction SilentlyContinue
 ```
 Open with ProperTree, Visual Studio or even a normal IDE/text editor. XCode maybe?
+
+In order to view backups, you have to grant Full Disk Access to your terminal program: System Preferences > Security & Privacy > Privacy > Full Disk Access > Select Terminal
+
+```
+cd /Users/benleftwich/Library/Application Support/MobileSync/Backup/
+```
+
