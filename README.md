@@ -78,14 +78,47 @@ In a court of law, any evidence submitted must be admissible. This complex proce
 | Physical acquisition | The most direct approach, physical acquisition is the use of forensic imaging kits such as Cellebrite to take entire bit-for-bit copies of both the data and system partitions. Unsophisticated tools (such as those that don't launch the iPhone into a custom boot loader) will leave the data encrypted. |
 
 
+#### Direct Acquisition:
 
+Perhaps one of the only times where it could be argued that Cellebrite's "Physical Analyzer" has more bells and whistles then what's needed for the job. Non-forensically focused, and most importantly free, applications such as the iFunbox perform the same job in this scenario.
+
+Direct acquisition covers three scenarios:
+
+1. There is no password on the phone
+
+2. There is a password but it is known to the analyst
+
+3. The analyst has a "Lockdown Certificate" which is what we'll come onto in just a bit.
+
+Whilst this sounds appealing, applications such as the iFunbox are capable of writing to the device being analysed. Because of this, the image made will now be inadmissible as evidence due to the fact that there's a possibility data was (over)written to the device that wasn't from the suspect - a defence attorney can argue the data could have been left by the forensic analyst.
+
+
+#### Logical or Backup Acquisition:
+
+Also applicable to the three scenarios above, the backup acquisition is the cheapest way of acquiring data from a device such as an iPhone. By using iTunes' backup facility, analysts can simply use a computer that has been paired with the iPhone before. However, Logical acquisition is where the big money starts to roll in. You're going to be hearing of Cellebrite a lot, they're quite the giant in a very specialist field because of their incredible kit, making the actual stage of accumulating data ten-fold.
+
+After all, if you can't analyse a phone - just analyse the unlocked PC that has an entire backup upon it, right?
+
+
+#### iTunes Backups & Trust Certificates
+
+The analysis of iPhone backups made with iTunes is an interesting topic, to say the very least. When backing up an iPhone, iTunes accesses the iPhone in a privileged state - similar to using the sudo command on Linux to run a command with root privileges.
+
+iPhones will only backup to trusted computers. When plugging into a new device, the iPhone will ask the user whether or not they wish to trust the computer - as seen in the screenshot below:
+![iPhone Trust Popup](/THM-iOS-Forensics/docs/assets/images/iphone-trust.png)
+
+
+In Linux/MacOS:
 ```
 sudo find / -type f -name "*.plist" 2> /dev/null
+```
+In Windows:
+```
 Get-ChildItem -Path C:\ -Include *.plist -File -Recurse -ErrorAction SilentlyContinue
 ```
-Open with ProperTree, Visual Studio or even a normal IDE/text editor. XCode maybe?
+Open with ProperTree, Visual Studio or even a normal IDE/text editor.
 
-In order to view backups, you have to grant Full Disk Access to your terminal program: System Preferences > Security & Privacy > Privacy > Full Disk Access > Select Terminal
+In order to view backups on MacOS, you have to grant Full Disk Access to your terminal program: System Preferences > Security & Privacy > Privacy > Full Disk Access > Select Terminal
 
 ```
 cd /Users/benleftwich/Library/Application Support/MobileSync/Backup/
