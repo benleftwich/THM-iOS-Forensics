@@ -112,6 +112,9 @@ iPhones will only backup to trusted computers. When plugging into a new device, 
 A lockdown certificate stored within ```/private/var/db/lockdown``` on later iOS devices or ```/private/var/Lockdown``` on older iOS devices.
 Note that Apple have locked this folder down and you are initially unable to alter permissions on it: 
 ![Lockdown folder is locked down](/THM-iOS-Forensics/docs/assets/images/lockdown-folder-permissions.png)
+(The same issue occurs if you go to the folder via Finder, Command-Shift-G dialogue box).
+
+[Adding an Administrator account on MacOS](https://www.fireebok.com/resource/how-to-fix-when-you-do-not-have-the-necessary-permission-on-mac.html)
 
 
 In Linux/MacOS:
