@@ -107,6 +107,12 @@ The analysis of iPhone backups made with iTunes is an interesting topic, to say 
 iPhones will only backup to trusted computers. When plugging into a new device, the iPhone will ask the user whether or not they wish to trust the computer - as seen in the screenshot below:
 ![iPhone Trust Popup](/THM-iOS-Forensics/docs/assets/images/iphone-trust.png)
 
+"Trusting" a computer involves generating a pair certificate on both the iPhone and computer. If the certificate matches up on both devices, the iPhone can be backed up. This process is a security measure to prevent attacks such as "Juice Jacking".
+
+A lockdown certificate stored within ```/private/var/db/lockdown``` on later iOS devices or ```/private/var/Lockdown``` on older iOS devices.
+Note that Apple have locked this folder down and you are initially unable to alter permissions on it: 
+![Lockdown folder is locked down](/THM-iOS-Forensics/docs/assets/images/lockdown-folder-permissions.png)
+
 
 In Linux/MacOS:
 ```
