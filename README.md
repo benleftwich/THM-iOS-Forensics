@@ -154,6 +154,22 @@ You've found an iPhone with no passcode lock, what acquisition method would you 
 What is the name of the certificate that gets stored on a computer when it becomes trusted?
 > Trust/Lockdown Certificate
 
+# Analysing iOS Files
+#### Plists
+Apple, in true Apple fashion, have their own standardisation for files within their file systems. Presenting in the extension of plist, these files are property files who consist of data from anything such as preferences to application settings and data.
+
+For example, in this example iPhone dump, there is a log file named ```ResetCounter.plist```
+![ResetCounter.plist](/THM-iOS-Forensics/docs/assets/images/ResetCounterPlist.png)
+
+When opening the file, we can see it is of the formatting of an XML document. All that's contained within this specific file is the number of times the device has been "Hard Reset". On the iPhone specifically, this counter increments when you force restart the phone by holding down "Home" and "Power Button". Information like this is kept for diagnostics, however, if you think you've bought a new iPhone - it's worth taking a look!
+
+Whilst this file, in particular, was XML formatted, you may come across some that cannot be opened with a text editor. Take for example com.apple.preferences.datetime.plist:
+![Binary plist example](/THM-iOS-Forensics/docs/assets/images/com.apple.preferences.datetime.plist.png)
+
+We'd need to use a hex editor such as HxD to view the information stored within this plist:
+![Binary plist example, HxD](/THM-iOS-Forensics/docs/assets/images/HxD.png)
+
+Where we now discover that the data encoded within this plist reveals the timezone of the iPhone, in this case, the device is set to the Europe/London timezone.
 
 #### Finding plist files on your computer
 In Linux/MacOS:
