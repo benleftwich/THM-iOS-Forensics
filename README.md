@@ -110,12 +110,49 @@ iPhones will only backup to trusted computers. When plugging into a new device, 
 "Trusting" a computer involves generating a pair certificate on both the iPhone and computer. If the certificate matches up on both devices, the iPhone can be backed up. This process is a security measure to prevent attacks such as "Juice Jacking".
 
 A lockdown certificate stored within ```/private/var/db/lockdown``` on later iOS devices or ```/private/var/Lockdown``` on older iOS devices.
-Note that Apple have locked this folder down and you are initially unable to alter permissions on it: 
-![Lockdown folder is locked down](/THM-iOS-Forensics/docs/assets/images/lockdown-folder-permissions.png)
-(The same issue occurs if you go to the folder via Finder, Command-Shift-G dialogue box).
+![iOS lockdown certificate](/THM-iOS-Forensics/docs/assets/images/iOSlockdowncertificate.png)
 
-[Adding an Administrator account on MacOS](https://www.fireebok.com/resource/how-to-fix-when-you-do-not-have-the-necessary-permission-on-mac.html)
+On the computer, in this case Windows, this certificate is stored in ```C:\ProgramData\Apple\Lockdown```
+![Windows lockdown certificate](/THM-iOS-Forensics/docs/assets/images/Windowslockdowncertificate.png)
 
+The certificate within the computer contains the private keys used to encrypt and decrypt against the iPhones public key.
+
+#### Trust Certificates Explained
+
+Trust certificates aren't permanent by design and will eventually require you to re-trust the device. Trust certificates, at an abstract work in the following way:
+
+iTunes will generate a certificate using the iPhone's unique identifier once data read/write has been allowed by trusting the computer on the iPhone.
+This certificate will be stored on the trusted computer for 30 days. Afterwhich you will need to re-trust the device. However, the certificate that is generated can only be used for 48 hours since the user has last unlocked their iPhone. Let's break this down:
+
+If the iPhone has been connected to a trusted computer but the iPhone hasn't been unlocked in a week, the certificate won't be used although it is still valid. Once the iPhone is unlocked, the iPhone will automatically allow read/write access by the trusted computer without the "Trust This Computer" popup. However, if you were to connect the iPhone to the trusted computer 6 hours since it was last unlocked, the iPhone will allow read/write access straight away.
+
+#### How can We Utilise These Trust Certificates?
+
+First, we need to understand the backups that iTunes creates. iTunes allows for two types of backups resulting in different amounts of data being backed up onto the computer and ultimately how it should be analysed: "Unencrypted" and "Encrypted"
+
+
+Unencrypted backups are simply that - unencrypted. Perfect! We'll have a copy of photos that aren't synced to iCloud, a copy of browsing history and the likes. However, no passwords or health and Homekit data - these are only backed up if the "Encrypted" option is set by the user.
+
+Remembering that iTunes accesses the iPhone with elevated privileges using lockdown certificates, we can extract data from the iPhone such as the keychain. This keychain includes (but isn't limited) to passwords such as:
+
+Wi-Fi Passwords
+Internet Account Credentials from " Autofill Password"
+VPN
+Root certificates for applications
+Exchange / Mail credentials
+
+Suddenly, you have the credentials to the suspect's accounts and the likes.
+
+I thoroughly encourage you to read this [excellent article](https://farleyforensics.com/2019/04/14/forensic-analysis-of-itunes-backups/) on how iTunes backups can be forensically analysed with relative ease.
+
+What is the name of a forensics tool that couldn't be used in a court of law, because data could be written to the device being analysed?
+> iFunbox
+
+You've found an iPhone with no passcode lock, what acquisition method would you use?    
+> Direct Acquisition 
+
+What is the name of the certificate that gets stored on a computer when it becomes trusted?
+> Trust/Lockdown Certificate
 
 In Linux/MacOS:
 ```
