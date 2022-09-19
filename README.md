@@ -191,26 +191,48 @@ cd /Users/benleftwich/Library/Application Support/MobileSync/Backup/
 ```
 
 # Task 9: Scenario: Operation JustEncase (Deploy)
+We find the phone extract on the desktop in a folder named OpJustEnCase.
+
 Who was the recepient of the SMS message sent on 23rd of August 2020?
 > Lewis Randall
+The relevant database is located in ```C:\Users\cmnatic\Desktop\OpJustEnCase\var\mobile\Library\SMS\sms.db```
+Open it with DB Browser for SQLite, and select the browse data tab. Select the message table and scroll to the recipients column.
+![Message table](/THM-iOS-Forensics/docs/assets/images/Question1.png)
 
 What did the SMS message say?
 > Did you get the goods?
+This is the same table, just scroll to the text column:
+![Message table, text column](/THM-iOS-Forensics/docs/assets/images/Question2.png)
 
 Looking at the address book, what is the first name of the other person in the contacts?
 > Jenny
+Still using the DB Browser for SQLite, load the following db: ```C:\Users\cmnatic\Desktop\OpJustEnCase\var\mobile\Library\AddressBook\AddressBook.sqlitedb```
+Browse the ABPerson table to view the contacts.
+![ABPerson table](/THM-iOS-Forensics/docs/assets/images/Question3.png)
 
 Following on from Question #3, what is their listed "Organization"
 > Transportation
+See above, just move to the relevant Organization column.
 
 Investigate their browsing history, what is the address of the website that they have bookmarked?    
 > https://blog.cmnatic.co.uk
+Still using the DB Browser for SQLite, load the following db: ```C:\Users\cmnatic\Desktop\OpJustEnCase\var\mobile\Library\Safari\Bookmarks.db```
+Browse the bookmarks table:
+![bookmarks table](/THM-iOS-Forensics/docs/assets/images/Question5.png)
+
 
 The suspected received an email, what is the remote_id of the sender?    
 > 51.32.56.12
+Still using the DB Browser for SQLite, load the following db: ```C:\Users\cmnatic\Desktop\OpJustEnCase\var\mobile\Library\Mail\Envelope Index```
+Browse the messages table:
+![messages table](/THM-iOS-Forensics/docs/assets/images/Question6.png)
 
 What is the name of the company on one of the images stored on the suspects phone?
 > TryHackMe
+Open the png file located at ```C:\Users\cmnatic\Desktop\OpJustEnCase\var\mobile\Media\DCIM\DCIM\TryHackMe.png```
+![Image on phone](/THM-iOS-Forensics/docs/assets/images/Question7.png)
  
 What is the value of the cookie that was left behind?
 > THM{COOKIES!!!}
+Open in Sublime: ```C:\Users\cmnatic\Desktop\OpJustEnCase\var\mobile\Library\Cookies\com.apple.itunesstored.plist```
+![Cookie](/THM-iOS-Forensics/docs/assets/images/Question8.png)
