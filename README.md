@@ -190,3 +190,27 @@ In order to view backups on MacOS, you have to grant Full Disk Access to your te
 cd /Users/benleftwich/Library/Application Support/MobileSync/Backup/
 ```
 
+# Task 9: Scenario: Operation JustEncase (Deploy)
+Who was the recepient of the SMS message sent on 23rd of August 2020?
+> Lewis Randall
+
+What did the SMS message say?
+> Did you get the goods?
+
+Looking at the address book, what is the first name of the other person in the contacts?
+> Jenny
+
+Following on from Question #3, what is their listed "Organization"
+> Transportation
+
+Investigate their browsing history, what is the address of the website that they have bookmarked?    
+> https://blog.cmnatic.co.uk
+
+The suspected received an email, what is the remote_id of the sender?    
+> 51.32.56.12
+
+What is the name of the company on one of the images stored on the suspects phone?
+> TryHackMe
+ 
+What is the value of the cookie that was left behind?
+> THM{COOKIES!!!}
