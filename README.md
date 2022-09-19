@@ -154,6 +154,8 @@ You've found an iPhone with no passcode lock, what acquisition method would you 
 What is the name of the certificate that gets stored on a computer when it becomes trusted?
 > Trust/Lockdown Certificate
 
+
+#### Finding plist files on your computer
 In Linux/MacOS:
 ```
 sudo find / -type f -name "*.plist" 2> /dev/null
@@ -162,7 +164,9 @@ In Windows:
 ```
 Get-ChildItem -Path C:\ -Include *.plist -File -Recurse -ErrorAction SilentlyContinue
 ```
-Open with ProperTree, Visual Studio or even a normal IDE/text editor.
+Open with any text editor, in some cases you will need to use a hex editor to view the ones which have binary data.
+
+#### iOS Backups
 
 In order to view backups on MacOS, you have to grant Full Disk Access to your terminal program: System Preferences > Security & Privacy > Privacy > Full Disk Access > Select Terminal
 
